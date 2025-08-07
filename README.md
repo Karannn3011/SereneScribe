@@ -1,69 +1,76 @@
-# React + TypeScript + Vite
+# SereneScribe | Your AI-Powered Wellness Journal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<div align="center">
+  <img src="public/vite.svg" alt="SereneScribe Logo" width="100"/>
+</div>
 
-Currently, two official plugins are available:
+**Live Demo: [serene-scribe.vercel.app](https://serene-scribe.vercel.app/)**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**SereneScribe** is a full-stack web application designed to help users track their mental wellbeing through daily journaling. It leverages AI to provide emotional analysis, allowing users to discover patterns and gain deeper insights into their feelings over time.
 
-## Expanding the ESLint configuration
+This project was built from the ground up, demonstrating a complete development lifecycle from backend API creation to frontend deployment and asynchronous task handling.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## ✨ Key Features
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+* **Secure User Authentication**: Users can register and log in securely using a JWT-based authentication system.
+* **CRUD for Journal Entries**: A complete Create, Read, Update, and Delete interface for managing journal entries with pagination.
+* **AI-Powered Emotion Analysis**: Each journal entry is automatically analyzed by an AI model (via the Hugging Face API) to determine the dominant emotion.
+* **Dynamic Data Visualization**: Interactive charts display the user's mood trends and emotion distribution over time based on their entries.
+* **Responsive Design**: A modern and clean UI that works seamlessly on both desktop and mobile devices.
+* **Asynchronous Processing**: AI analysis is handled as a background task to ensure a fast and responsive user experience when saving new entries.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠️ Tech Stack
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+This project utilizes a modern, robust, and scalable tech stack.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+* **Frontend**:
+    * **Framework**: React (with Vite) & TypeScript
+    * **Styling**: Tailwind CSS & Shadcn/UI
+    * **State Management**: React Context API
+    * **Data Fetching**: Axios
+    * **Animations**: Framer Motion
+
+* **Backend**:
+    * **Framework**: Java & Spring Boot
+    * **Database**: MongoDB Atlas (NoSQL)
+    * **Security**: Spring Security with JWT
+    * **AI Integration**: Hugging Face Inference API (`SamLowe/roberta-base-go_emotions`)
+
+* **Deployment**:
+    * **Frontend**: Vercel
+    * **Backend**: Render (using a Docker container)
+
+---
+
+## 🚀 Local Setup & Installation
+
+To run this project on your local machine, you will need two separate terminal windows.
+
+### Backend (Java Spring Boot)
+1.  Clone the backend repository.
+2.  Navigate to the project root.
+3.  Set the required environment variables (`SPRING_DATA_MONGODB_URI`, `JWT_SECRET`, `HUGGINGFACE_API_TOKEN`).
+4.  Build the application using the Maven wrapper: `./mvnw clean package`
+5.  Run the application: `java -jar target/your-app-name.jar`
+
+### Frontend (React)
+1.  Clone the frontend repository.
+2.  Navigate to the project root.
+3.  Install dependencies: `npm install`
+4.  Create a `.env.local` file and set `VITE_API_BASE_URL=http://localhost:8080/api`.
+5.  Start the development server: `npm run dev`
+
+---
+
+## ⚠️ A Note on Deployment & Cold Starts
+
+Both the frontend and backend for this project are deployed on free-tier hosting services (Vercel and Render, respectively). As a result:
+
+* **Backend Wake-Up Time**: If the backend has been inactive for a period (usually 15 minutes), it will go to sleep to conserve resources. The first API request will "wake it up," which may cause an initial delay of **up to 30-40 seconds**. After this first request, the application will be fast and responsive.
+* **AI Model Cold Start**: Similarly, the Hugging Face API uses a serverless model on the free tier. The first time a journal entry is created after a period of inactivity, the AI model has a "cold start" and can take 10-20 seconds to process. This is handled asynchronously on the backend, so it does not block the user, but the emotion analysis for that first entry will take a moment to appear.
+
+This implementation demonstrates an understanding of the limitations of free-tier services and the use of professional patterns (like asynchronous processing) to handle them gracefully.
