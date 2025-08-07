@@ -18,7 +18,7 @@ const Footer = () => {
             <p className="text-sm text-gray-600 max-w-md">
               SereneScribe is a personal journaling app that uses AI to help you discover emotional patterns and gain insights into your mental wellbeing.
               <a 
-                href="https://github.com/your-username/your-repo" // <-- Add your GitHub repo link here
+                href="https://github.com/Karannn3011/SereneScribe" // <-- Add your GitHub repo link here
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="font-medium text-blue-600 hover:underline ml-1"
