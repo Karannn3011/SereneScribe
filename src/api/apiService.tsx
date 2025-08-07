@@ -88,6 +88,7 @@ export const createEntry = (entryData: NewEntryData, token: string) => {
   });
 };
 
+
 export const getEntries = (token: string, page: number, size: number) => {
   return apiClient.get<Page<JournalEntry>>("/entries", {
     headers: {

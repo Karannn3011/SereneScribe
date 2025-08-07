@@ -46,21 +46,21 @@ const Insights = () => {
                   <h3 className="text-lg font-semibold text-gray-900 mb-4">Today's Emotions</h3>
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-600">Joy</span>
+                      <span className="text-sm text-gray-600">Stress</span>
                       <div className="flex-1 mx-3 bg-gray-200 rounded-full h-2">
                         <div className="bg-gradient-to-r from-yellow-400 to-orange-400 h-2 rounded-full" style={{ width: '85%' }}></div>
                       </div>
                       <span className="text-sm font-medium text-gray-900">85%</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-600">Calm</span>
+                      <span className="text-sm text-gray-600">Energy</span>
                       <div className="flex-1 mx-3 bg-gray-200 rounded-full h-2">
                         <div className="bg-gradient-to-r from-green-400 to-teal-400 h-2 rounded-full" style={{ width: '72%' }}></div>
                       </div>
                       <span className="text-sm font-medium text-gray-900">72%</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-600">Focus</span>
+                      <span className="text-sm text-gray-600">Mood</span>
                       <div className="flex-1 mx-3 bg-gray-200 rounded-full h-2">
                         <div className="bg-gradient-to-r from-blue-400 to-purple-400 h-2 rounded-full" style={{ width: '68%' }}></div>
                       </div>
@@ -71,7 +71,8 @@ const Insights = () => {
                 
                 <div className="bg-gradient-to-r from-teal-50 to-cyan-50 rounded-2xl p-6">
                   <h3 className="text-lg font-semibold text-gray-900 mb-3">AI Insight</h3>
-                  <p className="text-sm text-gray-600">Your energy levels peak on Tuesdays and Wednesdays. Consider scheduling important tasks during these days for optimal performance.</p>
+                  <p className="text-sm text-gray-600"><span className="italic">"Finally finished the big project at work today. It was a huge challenge, but seeing it all come together feels amazing. So proud of the team and relieved it's done!"</span><br />
+                  AI analysis: feeling 'pride'</p>
                 </div>
               </div>
             </div>
